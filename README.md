@@ -11,10 +11,10 @@
 go env -w GOPROXY=https://goproxy.cn,direct
 
 # 安装最新版本
-go install github.com/lovehang/newb-cli@latest
+go install github.com/lxhanghub/newb-cli@latest
 
 # 或安装指定版本
-go install github.com/lovehang/newb-cli@v0.1.0
+go install github.com/lxhanghub/newb-cli@v0.1.0
 ```
 
 ### 方式二：手动编译安装
@@ -23,7 +23,7 @@ go install github.com/lovehang/newb-cli@v0.1.0
 
 ```bash
 # 克隆仓库
-git clone https://github.com/lovehang/newb-cli.git
+git clone https://github.com/lxhanghub/newb-cli.git
 cd newb-cli
 
 # 编译

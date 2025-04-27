@@ -1,4 +1,4 @@
-module github.com/lovehang/newb-cli
+module github.com/lxhanghub/newb-cli
 
 go 1.21
 

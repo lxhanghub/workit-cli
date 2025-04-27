@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/lovehang/newb-cli/cmd"
+	"github.com/lxhanghub/newb-cli/cmd"
 )
 
 func main() {
