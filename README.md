@@ -4,8 +4,53 @@
 
 ## 安装
 
+### 方式一：go install 安装（推荐）
+
 ```bash
+# 设置 GOPROXY 环境变量（解决可能的网络问题）
+go env -w GOPROXY=https://goproxy.cn,direct
+
+# 安装最新版本
 go install github.com/lovehang/newb-cli@latest
+
+# 或安装指定版本
+go install github.com/lovehang/newb-cli@v0.1.0
+```
+
+### 方式二：手动编译安装
+
+如果 go install 安装失败，可以尝试手动编译安装：
+
+```bash
+# 克隆仓库
+git clone https://github.com/lovehang/newb-cli.git
+cd newb-cli
+
+# 编译
+go build -o newb main.go
+
+# 将编译好的程序移动到 GOPATH/bin 目录
+mv newb $GOPATH/bin/
+```
+
+### 常见问题排查
+
+1. 确认 Go 环境配置：
+```bash
+# 检查 Go 版本（需要 1.16+）
+go version
+
+# 检查 GOPATH 和 GOPROXY
+go env GOPATH GOPROXY
+```
+
+2. 如果出现网络问题，尝试：
+```bash
+# 清理模块缓存
+go clean -modcache
+
+# 重新下载依赖
+go mod download
 ```
 
 ## 命令说明
