@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -26,8 +27,8 @@ var (
 )
 
 func init() {
-	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "https://github.com/lxhanghub/newb", "模板仓库地址")
-	newCmd.Flags().StringVarP(&optBranch, "branch", "b", "main", "模板仓库分支")
+	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "git@github.com:lxhanghub/newb.git", "模板仓库地址")
+	newCmd.Flags().StringVarP(&optBranch, "branch", "b", "cli-template", "模板仓库分支")
 	newCmd.Flags().BoolVarP(&optForce, "force", "f", false, "强制创建(覆盖已存在目录)")
 }
 
@@ -115,6 +116,20 @@ func initProject(name string) error {
 		return fmt.Errorf("初始化go.mod失败: %v", err)
 	}
 
+	//  替换 cmd/ 目录下的 import
+	oldImport := optBranch
+
+	if !strings.Contains(optBranch, "cli") {
+		oldImport = "github.com/lxhanghub/newb"
+	}
+
+	cmdPath := filepath.Join(name, "cmd")
+	newImport := fmt.Sprintf("%s", name)
+	err := replaceCmdImports(cmdPath, oldImport, newImport)
+	if err != nil {
+		return fmt.Errorf("替换 import 失败: %v", err)
+	}
+
 	// 安装依赖
 	fmt.Println("➤ 安装依赖...")
 	cmd = exec.Command("go", "mod", "tidy")
@@ -129,5 +144,31 @@ func showSuccess(name string) {
 	fmt.Printf("\n运行项目:\n")
 	fmt.Printf("  cd %s\n", name)
 	fmt.Printf("  go run cmd/todo/main.go\n")
-	fmt.Printf("  浏览器访问:http://localhost:8080/ping\n")
+	fmt.Printf("  浏览器访问:http://localhost:8080/hello\n")
+	fmt.Printf("  浏览器访问:http://localhost:8080/swagger/index.html\n")
+}
+func replaceCmdImports(cmdDir, oldImport, newImport string) error {
+	return filepath.WalkDir(cmdDir, func(path string, d os.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() {
+			return nil
+		}
+		if strings.HasSuffix(path, ".go") {
+			content, err := os.ReadFile(path)
+			if err != nil {
+				return err
+			}
+			if strings.Contains(string(content), oldImport) {
+				newContent := strings.ReplaceAll(string(content), oldImport, newImport)
+				err = os.WriteFile(path, []byte(newContent), 0644)
+				if err != nil {
+					return err
+				}
+				fmt.Printf("➤ 替换 import 成功: %s\n", path)
+			}
+		}
+		return nil
+	})
 }

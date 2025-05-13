@@ -14,7 +14,7 @@ go env -w GOPROXY=https://goproxy.cn,direct
 go install github.com/lxhanghub/newb-cli/cmd/newb@latest
 
 # 或安装指定版本
-go install github.com/lxhanghub/newb-cli/cmd/newb@v0.1.0
+go install github.com/lxhanghub/newb-cli/cmd/newb@v1.0.0
 ```
 
 ### 方式二：手动编译安装
