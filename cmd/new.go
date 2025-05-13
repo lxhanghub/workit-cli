@@ -119,7 +119,7 @@ func initProject(name string) error {
 	//  替换 cmd/ 目录下的 import
 	oldImport := optBranch
 
-	if optBranch == "main" {
+	if !strings.Contains(optBranch, "cli") {
 		oldImport = "github.com/lxhanghub/newb"
 	}
 
