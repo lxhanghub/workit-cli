@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/lxhanghub/newb-cli/cmd"
+	"github.com/lxhanghub/fish-cli/cmd"
 )
 
 func main() {

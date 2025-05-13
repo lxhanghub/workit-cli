@@ -1,4 +1,4 @@
-module github.com/lxhanghub/newb-cli
+module github.com/lxhanghub/fish-cli
 
 go 1.21
 
