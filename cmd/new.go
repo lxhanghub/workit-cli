@@ -28,7 +28,7 @@ var (
 
 func init() {
 	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "git@github.com:lxhanghub/newb.git", "模板仓库地址")
-	newCmd.Flags().StringVarP(&optBranch, "branch", "b", "main", "模板仓库分支")
+	newCmd.Flags().StringVarP(&optBranch, "branch", "b", "cli-template", "模板仓库分支")
 	newCmd.Flags().BoolVarP(&optForce, "force", "f", false, "强制创建(覆盖已存在目录)")
 }
 
@@ -117,10 +117,14 @@ func initProject(name string) error {
 	}
 
 	//  替换 cmd/ 目录下的 import
-	cmdPath := filepath.Join(name, "cmd")
-	oldImport := "github.com/lxhanghub/newb"
-	newImport := fmt.Sprintf("%s", name)
+	oldImport := optBranch
 
+	if optBranch == "main" {
+		oldImport = "github.com/lxhanghub/newb"
+	}
+
+	cmdPath := filepath.Join(name, "cmd")
+	newImport := fmt.Sprintf("%s", name)
 	err := replaceCmdImports(cmdPath, oldImport, newImport)
 	if err != nil {
 		return fmt.Errorf("替换 import 失败: %v", err)
@@ -140,7 +144,8 @@ func showSuccess(name string) {
 	fmt.Printf("\n运行项目:\n")
 	fmt.Printf("  cd %s\n", name)
 	fmt.Printf("  go run cmd/todo/main.go\n")
-	fmt.Printf("  浏览器访问:http://localhost:8080/ping\n")
+	fmt.Printf("  浏览器访问:http://localhost:8080/hello\n")
+	fmt.Printf("  浏览器访问:http://localhost:8080/swagger/index.html\n")
 }
 func replaceCmdImports(cmdDir, oldImport, newImport string) error {
 	return filepath.WalkDir(cmdDir, func(path string, d os.DirEntry, err error) error {
