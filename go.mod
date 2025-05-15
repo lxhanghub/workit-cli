@@ -1,4 +1,4 @@
-module github.com/lxhanghub/fish-cli
+module github.com/lxhanghub/mfish-cli
 
 go 1.21
 

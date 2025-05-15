@@ -20,14 +20,14 @@ var (
 	newCmd = &cobra.Command{
 		Use:     "new [name]",
 		Short:   "创建新项目",
-		Example: "fish new myapp --template https://github.com/lxhanghub/go-fish",
+		Example: "mfish new myapp --template https://github.com/lxhanghub/go-mfish",
 		Args:    cobra.ExactArgs(1),
 		RunE:    runNew,
 	}
 )
 
 func init() {
-	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "git@github.com:lxhanghub/go-fish.git", "模板仓库地址")
+	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "git@github.com:lxhanghub/go-mfish.git", "模板仓库地址")
 	newCmd.Flags().StringVarP(&optBranch, "branch", "b", "cli-template", "模板仓库分支")
 	newCmd.Flags().BoolVarP(&optForce, "force", "f", false, "强制创建(覆盖已存在目录)")
 }
@@ -120,7 +120,7 @@ func initProject(name string) error {
 	oldImport := optBranch
 
 	if !strings.Contains(optBranch, "cli") {
-		oldImport = "github.com/lxhanghub/go-fish"
+		oldImport = "github.com/lxhanghub/go-mfish"
 	}
 
 	cmdPath := filepath.Join(name, "cmd")

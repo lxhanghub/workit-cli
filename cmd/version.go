@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	Version   = "v1.0.4" // 改为实际发布的版本号
+	Version   = "v1.0.5" // 改为实际发布的版本号
 	BuildTime = "unknown"
 	GitCommit = "unknown"
 
@@ -15,7 +15,7 @@ var (
 		Use:   "version",
 		Short: "显示版本信息",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Printf("fish version %s\n", Version)
+			fmt.Printf("mfish version %s\n", Version)
 			fmt.Printf("  BuildTime: %s\n", BuildTime)
 			fmt.Printf("  GitCommit: %s\n", GitCommit)
 		},

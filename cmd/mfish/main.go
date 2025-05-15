@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/lxhanghub/fish-cli/cmd"
+	"github.com/lxhanghub/mfish-cli/cmd"
 )
 
 func main() {
