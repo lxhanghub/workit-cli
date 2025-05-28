@@ -11,7 +11,7 @@ import (
 var (
 	cfgFile string
 	rootCmd = &cobra.Command{
-		Use:     "mfish",
+		Use:     "workit",
 		Short:   "爱航工坊-Golang快速开发模板CLI工具",
 		Version: Version,
 	}
@@ -19,7 +19,7 @@ var (
 
 func init() {
 	cobra.OnInitialize(initConfig)
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "配置文件 (默认: $HOME/.mfish.yaml)")
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "配置文件 (默认: $HOME/.workit.yaml)")
 
 	// 只保留必要的命令
 	rootCmd.AddCommand(versionCmd)
@@ -37,7 +37,7 @@ func initConfig() {
 		os.Exit(1)
 	}
 
-	cfgFile = filepath.Join(home, ".mfish.yaml")
+	cfgFile = filepath.Join(home, ".workit.yaml")
 }
 
 func Execute() error {

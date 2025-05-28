@@ -1,6 +1,6 @@
-module github.com/lxhanghub/mfish-cli
+module github.com/lxhanghub/workit-cli
 
-go 1.21
+go 1.22.4
 
 require github.com/spf13/cobra v1.9.1
 
