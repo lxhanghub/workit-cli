@@ -74,17 +74,14 @@ workit new myapp
 高级选项:
 
 ```bash
-# 指定模板仓库
-workit new myapp --template https://github.com/your/repo  
-
-# 指定分支
+# 指定分支 默认为gin框架 cli-echo为 echo框架
 workit new myapp --branch cli-echo
 
 # 强制覆盖已存在目录
 workit new myapp --force
 
 # 组合使用
-workit new myapp -t https://github.com/your/repo -b develop -f
+workit new myapp  -b develop -f
 ```
 
 ### 命令参数
