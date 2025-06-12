@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	Version   = "v1.0.6" // 改为实际发布的版本号
+	Version   = "v1.0.7" // 改为实际发布的版本号
 	BuildTime = "unknown"
 	GitCommit = "unknown"
 
