@@ -143,7 +143,7 @@ func showSuccess(name string) {
 	fmt.Printf("\n✓ 项目创建成功: %s\n", name)
 	fmt.Printf("\n运行项目:\n")
 	fmt.Printf("  cd %s\n", name)
-	fmt.Printf("  go run cmd/todo/main.go\n")
+	fmt.Printf("  go run cmd/service1/main.go\n")
 	fmt.Printf("  浏览器访问:http://localhost:8080/hello\n")
 	fmt.Printf("  浏览器访问:http://localhost:8080/swagger/index.html\n")
 }
