@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lxhanghub/workit-cli/cmd"
+	"github.com/xiaohangshuhub/workit-cli/cmd"
 )
 
 func main() {

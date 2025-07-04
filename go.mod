@@ -1,4 +1,4 @@
-module github.com/lxhanghub/workit-cli
+module github.com/xiaohangshuhub/workit-cli
 
 go 1.22.4
 

@@ -11,10 +11,10 @@
 go env -w GOPROXY=https://goproxy.cn,direct
 
 # 安装最新版本
-go install github.com/lxhanghub/workit-cli/cmd/workit@latest
+go install github.com/xiaohangshuhub/workit-cli/cmd/workit@latest
 
 # 或安装指定版本
-go install github.com/lxhanghub/workit-cli/cmd/workit@v1.0.8
+go install github.com/xiaohangshuhub/workit-cli/cmd/workit@v1.0.8
 ```
 
 ### 方式二：手动编译安装
@@ -23,7 +23,7 @@ go install github.com/lxhanghub/workit-cli/cmd/workit@v1.0.8
 
 ```bash
 # 克隆仓库
-git clone https://github.com/lxhanghub/workit-cli.git
+git clone https://github.com/xiaohangshuhub/workit-cli.git
 cd workit-cli
 
 # 编译
@@ -89,7 +89,7 @@ workit new myapp  -b develop -f
 
 | 参数       | 简写 | 说明               | 默认值                              |
 | ---------- | ---- | ------------------ | ----------------------------------- |
-| --template | -t   | 模板仓库地址       | https://github.com/lxhanghub/workit |
+| --template | -t   | 模板仓库地址       | https://github.com/xiaohangshuhub/workit |
 | --branch   | -b   | 模板仓库分支       | cli-template                        |
 | --force    | -f   | 强制覆盖已存在目录 | false                               |
 | --config   | 无   | 指定配置文件路径   | $HOME/.newb.yaml                    |
@@ -124,7 +124,7 @@ workit new myapp  -b develop -f
 
 ```yaml
 template:
-  default: https://github.com/lxhanghub/workit
+  default: https://github.com/xiaohangshuhub/workit
   branch: cli-template
 ```
 

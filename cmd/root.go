@@ -12,7 +12,7 @@ var (
 	cfgFile string
 	rootCmd = &cobra.Command{
 		Use:     "workit",
-		Short:   "爱航工坊-Golang快速开发模板CLI工具",
+		Short:   "小航书-golang快速开发模板CLI工具",
 		Version: Version,
 	}
 )

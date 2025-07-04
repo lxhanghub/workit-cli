@@ -20,14 +20,14 @@ var (
 	newCmd = &cobra.Command{
 		Use:     "new [name]",
 		Short:   "创建新项目",
-		Example: "workit new myapp --template https://github.com/lxhanghub/go-workit",
+		Example: "workit new myapp --template https://github.com/xiaohangshuhub/go-workit",
 		Args:    cobra.ExactArgs(1),
 		RunE:    runNew,
 	}
 )
 
 func init() {
-	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "git@github.com:lxhanghub/go-workit.git", "模板仓库地址")
+	newCmd.Flags().StringVarP(&optTemplate, "template", "t", "git@github.com:xiaohangshuhub/go-workit.git", "模板仓库地址")
 	newCmd.Flags().StringVarP(&optBranch, "branch", "b", "cli-template", "模板仓库分支")
 	newCmd.Flags().BoolVarP(&optForce, "force", "f", false, "强制创建(覆盖已存在目录)")
 }
@@ -120,7 +120,7 @@ func initProject(name string) error {
 	oldImport := optBranch
 
 	if !strings.Contains(optBranch, "cli") {
-		oldImport = "github.com/lxhanghub/go-workit"
+		oldImport = "github.com/xiaohangshuhub/go-workit"
 	}
 
 	cmdPath := filepath.Join(name, "cmd")
